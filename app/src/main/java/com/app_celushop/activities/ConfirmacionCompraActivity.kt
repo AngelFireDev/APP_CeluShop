@@ -11,15 +11,15 @@ import androidx.core.view.WindowInsetsCompat
 import com.app_celushop.MainActivity
 import com.app_celushop.R
 
-class PerfilActivity : AppCompatActivity() {
+class ConfirmacionCompraActivity : AppCompatActivity() {
     private val SPLASH_DURATION = 3000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_perfil)
+        setContentView(R.layout.activity_confirmacion_compra)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, CatalogoActivity::class.java)
+            val intent = Intent(this, EdicionDireccionActivity::class.java)
             startActivity(intent)
             finish()
         }, SPLASH_DURATION)

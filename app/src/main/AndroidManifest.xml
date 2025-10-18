@@ -12,6 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APP_CeluShop">
         <activity
+            android:name=".activities.AnadirProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CatalogoAdministradorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EdicionInformacionUsuarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MenuLateralUsuarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MenuLateralAdministradorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EdicionDireccionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ConfirmacionCompraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CarritoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DetallesProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CatalogoActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.PerfilActivity"
             android:exported="false" />
         <activity

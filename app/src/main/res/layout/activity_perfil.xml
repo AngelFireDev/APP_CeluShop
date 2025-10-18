@@ -87,6 +87,7 @@
         android:layout_height="60dp"
         android:text="Cerrar Sesión"
         android:textSize="24sp"
+        android:backgroundTint="@color/background_activities"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.873"

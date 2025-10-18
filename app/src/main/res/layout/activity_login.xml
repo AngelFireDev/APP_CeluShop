@@ -25,15 +25,16 @@
 
     <Button
         android:id="@+id/bt_register2"
-        android:layout_width="285dp"
-        android:layout_height="122dp"
+        android:layout_width="271dp"
+        android:layout_height="63dp"
         android:text="Iniciar Sesión"
         android:textSize="34sp"
+        android:backgroundTint="@color/background_activities"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.721" />
 
     <TextView
         android:id="@+id/email2"

@@ -64,8 +64,9 @@
 
     <Button
         android:id="@+id/bt_register"
-        android:layout_width="235dp"
-        android:layout_height="80dp"
+        android:layout_width="237dp"
+        android:layout_height="63dp"
+        android:backgroundTint="@color/background_activities"
         android:text="Registrarse"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
