@@ -37,6 +37,21 @@ class DatabaseHelper(context: Context) :
                     $COLUM_COLOR TEXT NOT NULL,
                     $COLUM_STOCK INTEGER NOT NULL
                 )"""
+
+            // Tabla Usuarios
+            const val TABLE_USUARIOS = "usuarios"
+            const val COLUMN_ID = "id"
+            const val COLUMN_NOMBRE = "nombre"
+            const val COLUMN_CORREO = "email"
+            const val COLUMN_CONTRASENA = "password"
+
+            private const val CREATE_TABLE_USUARIOS = """
+                CREATE TABLE $TABLE_USUARIOS(
+                    $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    $COLUMN_NOMBRE TEXT NOT NULL,
+                    $COLUMN_CORREO TEXT NOT NULL UNIQUE,
+                    $COLUMN_CONTRASENA TEXT NOT NULL
+                )"""
         }
             //Ejecutar por primera vez la BD y que lo haga solo una vez
             override fun onCreate(db: SQLiteDatabase) {
@@ -47,3 +62,4 @@ class DatabaseHelper(context: Context) :
                 db.execSQL(CREATE_TABLE)
             }
         }
+

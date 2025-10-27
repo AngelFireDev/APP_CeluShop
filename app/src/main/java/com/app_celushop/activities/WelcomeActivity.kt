@@ -10,19 +10,19 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.app_celushop.MainActivity
 import com.app_celushop.R
+import android.widget.Button
 
 class WelcomeActivity : AppCompatActivity() {
-
-    private val SPLASH_DURATION = 3000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        Handler(Looper.getMainLooper()).postDelayed({
+        val btnWelcome = findViewById<Button>(R.id.btn_welcome)
+        btnWelcome.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
-        }, SPLASH_DURATION)
+        }
     }
 }

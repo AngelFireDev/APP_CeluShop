@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">APP_CeluShop</string>
+    <string name="welcome_celushop">Bienvenido A CeluShop</string>
+    <string name="text_btn_welcome">Iniciar</string>
+    <string name="text_btn_login">Iniciar Sesión</string>
+    <string name="text_btn_register">Registrarse"</string>
+    <string name="register">Registro</string>
+    <string name="inicio">Inicio</string>
+    <string name="name">Nombre</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="prompt_confirm_password">Confirmar Contraseña</string>
+    <string name="signIn">Iniciar Sesión</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
