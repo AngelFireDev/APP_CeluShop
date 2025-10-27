@@ -9,4 +9,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="Texto_Prueba"><![CDATA[Lorem Ipsum es simplemente estandar Lorem Ipsum ha sido el texto...]]></string>
+    <string name="texto_buscar">Buscar</string>
+    <string name="titulo_detalles_del_producto">Detalles del Producto</string>
+    <string name="btn_comprar">Comprar</string>
+    <string name="btn_añadir_carrito">Agregar al Carrito</string>
 </resources>
