@@ -6,20 +6,21 @@
     <string name="text_btn_register">Registrarse"</string>
     <string name="register">Registro</string>
     <string name="inicio">Inicio</string>
+    <string name="perfil">Perfil</string>
     <string name="name">Nombre</string>
+    <string name="historial">Historial</string>
+    <string name="home">Home</string>
+    <string name="carrito">Carrito</string>
+    <string name="catalogo">Catalogo</string>
+    <string name="cerrarSesion">Cerrar Sesión</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Correo</string>
     <string name="prompt_password">Contraseña</string>
     <string name="prompt_confirm_password">Confirmar Contraseña</string>
     <string name="signIn">Iniciar Sesión</string>
-    <string name="action_sign_in">Sign in or register</string>
-
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="Texto_Prueba"><![CDATA[Lorem Ipsum es simplemente estandar Lorem Ipsum ha sido el texto...]]></string>
     <string name="texto_buscar">Buscar</string>
     <string name="titulo_detalles_del_producto">Detalles del Producto</string>
     <string name="btn_comprar">Comprar</string>
     <string name="btn_añadir_carrito">Agregar al Carrito</string>
+    <string name="Texto_Prueba"><![CDATA[Lorem Ipsum es simplemente estandar Lorem Ipsum ha sido el texto...]]></string>
 </resources>

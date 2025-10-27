@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -18,8 +19,8 @@ import com.google.android.material.textfield.TextInputEditText
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var et_correo: TextInputEditText
-    private lateinit var et_contrasena: TextInputEditText
+    private lateinit var et_correo: EditText
+    private lateinit var et_contrasena: EditText
     private lateinit var btn_login: Button
     private lateinit var register_now: TextView
     private lateinit var usuariosDAO: UsuariosDAO
@@ -69,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
         if (usuariosDAO.validarLogin(correo, contrasena)) {
            val usuario = usuariosDAO.obtenerUsuario(correo)
             Toast.makeText(this, "Bienvenido ${usuario?.nombre}", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, PerfilActivity::class.java)
             startActivity(intent)
             finish()
         } else {

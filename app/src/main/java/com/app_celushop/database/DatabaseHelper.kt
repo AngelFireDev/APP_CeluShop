@@ -8,7 +8,7 @@ class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
         companion object{
             private const val DATABASE_NAME = "CeluShopDB"
-            private const val DATABASE_VERSION = 1
+            private const val DATABASE_VERSION = 2
 
             const val TABLE_PRODUCTOS = "productos"
             const val COLUM_ID = "id_producto"
@@ -56,10 +56,13 @@ class DatabaseHelper(context: Context) :
             //Ejecutar por primera vez la BD y que lo haga solo una vez
             override fun onCreate(db: SQLiteDatabase) {
                 db.execSQL(CREATE_TABLE)
+                db.execSQL(CREATE_TABLE_USUARIOS)
             }
 
             override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-                db.execSQL(CREATE_TABLE)
+                db.execSQL("DROP TABLE IF EXISTS $TABLE_PRODUCTOS")
+                db.execSQL("DROP TABLE IF EXISTS $TABLE_USUARIOS")
+                onCreate(db)
             }
         }
 

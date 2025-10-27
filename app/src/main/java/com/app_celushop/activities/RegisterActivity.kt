@@ -16,12 +16,14 @@ import com.app_celushop.R
 import com.app_celushop.database.UsuariosDAO
 import com.app_celushop.models.Usuarios
 import com.google.android.material.textfield.TextInputEditText
+import com.app_celushop.activities.LoginActivity
+
 
 class RegisterActivity : AppCompatActivity() {
-    private lateinit var et_nombre: TextInputEditText
-    private lateinit var et_correo: TextInputEditText
-    private lateinit var et_contrasena: TextInputEditText
-    private lateinit var  et_confirm_contrasena: TextInputEditText
+    private lateinit var et_nombre: EditText
+    private lateinit var et_correo: EditText
+    private lateinit var et_contrasena: EditText
+    private lateinit var  et_confirm_contrasena: EditText
     private lateinit var btn_register: Button
     private val usuariosDAO = UsuariosDAO(this)
 
@@ -95,6 +97,8 @@ class RegisterActivity : AppCompatActivity() {
 
         if(registrado) {
             Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
             finish()
         }else {
             Toast.makeText(this, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
