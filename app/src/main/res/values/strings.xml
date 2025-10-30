@@ -22,5 +22,16 @@
     <string name="titulo_detalles_del_producto">Detalles del Producto</string>
     <string name="btn_comprar">Comprar</string>
     <string name="btn_añadir_carrito">Agregar al Carrito</string>
+    <string name="text_imagen">Tecno Pova 7</string>
+    <string name="text_imagen_2">Redmi Note 15</string>
+    <string name="text_precio">$920.000</string>
+    <string name="text_marca">Marca</string>
+    <string name="text_modelo">Modelo</string>
+    <string name="text_almacenamiento">Almacenamiento</string>
+    <string name="almacenamiento">256GB</string>
+    <string name="text_ram">RAM</string>
+    <string name="ram">8GB</string>
+    <string name="text_color">Color</string>
+    <string name="color">Negro</string>
     <string name="Texto_Prueba"><![CDATA[Lorem Ipsum es simplemente estandar Lorem Ipsum ha sido el texto...]]></string>
 </resources>

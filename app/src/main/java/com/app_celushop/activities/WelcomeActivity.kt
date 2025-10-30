@@ -20,7 +20,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         val btnWelcome = findViewById<Button>(R.id.btn_welcome)
         btnWelcome.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }

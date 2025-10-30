@@ -50,17 +50,19 @@
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:gravity="center"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp"
-                android:background="@drawable/border_background">
+                android:background="@drawable/border_background"
+                android:elevation="4dp">
 
                 <ImageView
                     android:id="@+id/imagenProducto"
                     android:layout_width="150dp"
                     android:layout_height="135dp"
-                    app:srcCompat="@drawable/celular_tecno" />
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/redmi_note" />
 
                 <TextView
                     android:id="@+id/tituloProducto"
@@ -70,7 +72,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:text="Tecno Pova 7"/>
+                    android:text="@string/text_imagen_2"/>
 
                 <TextView
                     android:id="@+id/descripcionProducto"
@@ -86,23 +88,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="$920.000" />
+                    android:text="@string/text_precio" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp"
-                android:background="@drawable/border_background">
+                android:background="@drawable/border_background"
+                android:elevation="4dp">
 
                 <ImageView
                     android:id="@+id/imagenProducto_2"
                     android:layout_width="150dp"
                     android:layout_height="135dp"
+                    android:scaleType="centerCrop"
                     app:srcCompat="@drawable/celular_tecno" />
 
                 <TextView
@@ -113,7 +117,7 @@
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Tecno Pova 7"/>
+                    android:text="@string/text_imagen"/>
 
                 <TextView
                     android:id="@+id/descripcionProducto_2"
@@ -129,13 +133,107 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="$920.000" />
+                    android:text="@string/text_precio" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/border_background"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:id="@+id/imagenProducto_3"
+                    android:layout_width="150dp"
+                    android:layout_height="135dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/celular_tecno" />
+
+                <TextView
+                    android:id="@+id/tituloProducto_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="@string/text_imagen"/>
+
+                <TextView
+                    android:id="@+id/descripcionProducto_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/Texto_Prueba" />
+
+                <TextView
+                    android:id="@+id/precioProducto_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="@string/text_precio" />
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/border_background"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:id="@+id/imagenProducto_4"
+                    android:layout_width="150dp"
+                    android:layout_height="135dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/redmi_note" />
+
+                <TextView
+                    android:id="@+id/tituloProducto_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="@string/text_imagen_2"/>
+
+                <TextView
+                    android:id="@+id/descripcionProducto_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:text="@string/Texto_Prueba" />
+
+                <TextView
+                    android:id="@+id/precioProducto_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="@string/text_precio" />
+
+            </LinearLayout>
         </LinearLayout>
-
-
 
         <!--<androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -151,7 +249,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.154" />
 -->
-
 
 
     </LinearLayout>

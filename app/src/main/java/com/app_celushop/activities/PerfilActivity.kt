@@ -46,7 +46,28 @@ class PerfilActivity : AppCompatActivity() {
             iv_correo_user.text = usuario.email
         }
 
-        //
+        //Home
+        home.setOnClickListener {
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        //Catalogo
+        catalogo.setOnClickListener {
+            val intent = Intent(this, CatalogoActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        //Carrito
+        carrito.setOnClickListener {
+            val intent = Intent(this, CarritoActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        //Cerrar Sesión
         btn_cerrar_sesion.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
