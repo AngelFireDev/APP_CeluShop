@@ -26,7 +26,8 @@ class DetallesProductoActivity : AppCompatActivity() {
         }
 
         btn_comprar.setOnClickListener {
-
+            val intent = Intent(this, ConfirmacionCompraActivity::class.java)
+            startActivity(intent)
         }
     }
 }
