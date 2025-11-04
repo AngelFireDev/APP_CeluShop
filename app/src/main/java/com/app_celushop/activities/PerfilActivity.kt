@@ -9,7 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.app_celushop.MainActivity
+import com.app_celushop.activities.MainActivity
 import com.app_celushop.R
 import android.widget.TextView
 import com.app_celushop.database.UsuariosDAO

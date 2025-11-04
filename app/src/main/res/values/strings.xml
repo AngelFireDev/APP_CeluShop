@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">APP_CeluShop</string>
+    <string name="app_name">CeluShop</string>
     <string name="welcome_celushop">Bienvenido A CeluShop</string>
     <string name="text_btn_welcome">Iniciar</string>
     <string name="text_btn_login">Iniciar Sesión</string>
