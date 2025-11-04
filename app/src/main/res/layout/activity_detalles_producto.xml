@@ -106,7 +106,7 @@
                     android:id="@+id/ValorDatoMarca"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_imagen"
+                    android:text="@string/description_marca"
                     android:textSize="14sp"
                     android:textColor="@color/black"/>
             </LinearLayout>
@@ -136,7 +136,7 @@
                     android:id="@+id/ValorDatoModelo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_imagen"
+                    android:text="@string/description_modelo"
                     android:textSize="14sp"
                     android:textColor="@color/black" />
             </LinearLayout>

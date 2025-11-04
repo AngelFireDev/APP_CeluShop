@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="20dp">
+        android:padding="10dp">
 
 
         <LinearLayout
@@ -28,6 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="45dp"
+                android:background="@android:drawable/edit_text"
                 android:ems="8"
                 android:hint="@string/texto_buscar"
                 android:textColor="@color/black"
@@ -59,9 +60,9 @@
 
                 <ImageView
                     android:id="@+id/imagenProducto"
-                    android:layout_width="150dp"
+                    android:layout_width="140dp"
                     android:layout_height="135dp"
-                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/redmi_note" />
 
                 <TextView
@@ -106,7 +107,7 @@
                     android:id="@+id/imagenProducto_2"
                     android:layout_width="150dp"
                     android:layout_height="135dp"
-                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/celular_tecno" />
 
                 <TextView
@@ -158,7 +159,7 @@
                     android:id="@+id/imagenProducto_3"
                     android:layout_width="150dp"
                     android:layout_height="135dp"
-                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/celular_tecno" />
 
                 <TextView
@@ -203,7 +204,7 @@
                     android:id="@+id/imagenProducto_4"
                     android:layout_width="150dp"
                     android:layout_height="135dp"
-                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/redmi_note" />
 
                 <TextView
