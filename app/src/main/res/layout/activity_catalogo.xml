@@ -49,6 +49,7 @@
             android:layout_marginTop="10dp">
 
             <LinearLayout
+                android:id="@+id/producto"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -60,28 +61,28 @@
 
                 <ImageView
                     android:id="@+id/imagenProducto"
-                    android:layout_width="140dp"
+                    android:layout_width="150dp"
                     android:layout_height="135dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/redmi_note" />
+                    app:srcCompat="@drawable/celular_tecno" />
 
                 <TextView
-                    android:id="@+id/tituloProducto"
+                    android:id="@+id/titulo_producto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:text="@string/text_imagen_2"/>
+                    android:text="@string/text_imagen"/>
 
                 <TextView
                     android:id="@+id/descripcionProducto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="12sp"
                     android:textColor="@color/black"
+                    android:textSize="12sp"
                     android:text="@string/Texto_Prueba" />
 
                 <TextView
@@ -94,6 +95,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/producto_2"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -105,28 +107,28 @@
 
                 <ImageView
                     android:id="@+id/imagenProducto_2"
-                    android:layout_width="150dp"
+                    android:layout_width="140dp"
                     android:layout_height="135dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/celular_tecno" />
+                    app:srcCompat="@drawable/redmi_note" />
 
                 <TextView
-                    android:id="@+id/tituloProducto_2"
+                    android:id="@+id/titulo_producto_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="@string/text_imagen"/>
+                    android:textColor="@color/black"
+                    android:text="@string/text_imagen_2"/>
 
                 <TextView
                     android:id="@+id/descripcionProducto_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="@color/black"
                     android:textSize="12sp"
+                    android:textColor="@color/black"
                     android:text="@string/Texto_Prueba" />
 
                 <TextView
@@ -137,6 +139,8 @@
                     android:text="@string/text_precio" />
 
             </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -146,6 +150,7 @@
             android:layout_marginTop="10dp">
 
             <LinearLayout
+                android:id="@+id/producto_3"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -160,25 +165,25 @@
                     android:layout_width="150dp"
                     android:layout_height="135dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/celular_tecno" />
+                    app:srcCompat="@drawable/redmi_note" />
 
                 <TextView
-                    android:id="@+id/tituloProducto_3"
+                    android:id="@+id/titulo_producto_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:text="@string/text_imagen"/>
+                    android:text="@string/text_imagen_2"/>
 
                 <TextView
                     android:id="@+id/descripcionProducto_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="12sp"
                     android:textColor="@color/black"
+                    android:textSize="12sp"
                     android:text="@string/Texto_Prueba" />
 
                 <TextView
@@ -191,6 +196,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/producto_4"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -205,25 +211,25 @@
                     android:layout_width="150dp"
                     android:layout_height="135dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/redmi_note" />
+                    app:srcCompat="@drawable/celular_tecno" />
 
                 <TextView
-                    android:id="@+id/tituloProducto_4"
+                    android:id="@+id/titulo_producto_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="@string/text_imagen_2"/>
+                    android:textColor="@color/black"
+                    android:text="@string/text_imagen"/>
 
                 <TextView
                     android:id="@+id/descripcionProducto_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="@color/black"
                     android:textSize="12sp"
+                    android:textColor="@color/black"
                     android:text="@string/Texto_Prueba" />
 
                 <TextView
@@ -234,6 +240,8 @@
                     android:text="@string/text_precio" />
 
             </LinearLayout>
+
+
         </LinearLayout>
 
         <!--<androidx.appcompat.widget.Toolbar

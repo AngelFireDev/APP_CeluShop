@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,16 +13,23 @@ import com.app_celushop.activities.MainActivity
 import com.app_celushop.R
 
 class EdicionDireccionActivity : AppCompatActivity() {
-    private val SPLASH_DURATION = 3000L
+    private lateinit var btnChangeDelivery: Button
+    private lateinit var btnCancel: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edicion_direccion)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, EdicionInformacionUsuarioActivity::class.java)
-            startActivity(intent)
+        btnChangeDelivery = findViewById(R.id.btn_chance_delivery)
+        btnCancel = findViewById(R.id.btn_cancel)
+
+
+        btnChangeDelivery.setOnClickListener {
+            //(Funcion para cambiar los datos)
+        }
+
+        btnCancel.setOnClickListener{
             finish()
-        }, SPLASH_DURATION)
+        }
     }
 }

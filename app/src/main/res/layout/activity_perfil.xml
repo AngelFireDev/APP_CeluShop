@@ -58,10 +58,10 @@
                 />
 
             <TextView
-                android:id="@+id/historial"
+                android:id="@+id/home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/historial"
+                android:text="@string/home"
                 android:textSize="35sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -71,10 +71,10 @@
                 />
 
             <TextView
-                android:id="@+id/home"
+                android:id="@+id/edit_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/home"
+                android:text="@string/edit_perfil"
                 android:textSize="35sp"
                 android:textStyle="bold"
                 android:textAlignment="center"

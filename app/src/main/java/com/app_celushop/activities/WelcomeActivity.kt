@@ -22,7 +22,6 @@ class WelcomeActivity : AppCompatActivity() {
         btnWelcome.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 }

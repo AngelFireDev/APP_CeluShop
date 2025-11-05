@@ -106,7 +106,7 @@
             android:inputType="textEmailAddress" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btn_chance_delivery"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="start"
@@ -125,7 +125,7 @@
             android:layout_marginTop="100dp">
 
             <Button
-                android:id="@+id/btn_comprar"
+                android:id="@+id/btn_cancel"
                 android:layout_width="160dp"
                 android:layout_height="44dp"
                 android:text="@string/btn_cancel"
@@ -137,7 +137,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/btn_carrito"
+                android:id="@+id/btn_save"
                 android:layout_width="160dp"
                 android:layout_height="44dp"
                 android:text="@string/btn_save"

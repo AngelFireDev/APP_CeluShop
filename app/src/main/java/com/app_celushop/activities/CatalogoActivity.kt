@@ -26,10 +26,11 @@ class CatalogoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalogo)
 
-        tituloProducto_2 = findViewById(R.id.tituloProducto_2)
-        tituloProducto_3 = findViewById(R.id.tituloProducto_3)
-        tituloProducto_4 = findViewById(R.id.tituloProducto_4)
-        tituloProducto = findViewById(R.id.tituloProducto)
+        tituloProducto = findViewById(R.id.titulo_producto)
+        tituloProducto_2 = findViewById(R.id.titulo_producto_2)
+        tituloProducto_3 = findViewById(R.id.titulo_producto_3)
+        tituloProducto_4 = findViewById(R.id.titulo_producto_4)
+
 
         tituloProducto.setOnClickListener {
             val intent = Intent(this, DetallesProductoActivity::class.java)

@@ -17,7 +17,7 @@ import com.app_celushop.database.UsuariosDAO
 class PerfilActivity : AppCompatActivity() {
     private lateinit var iv_nombre_user: TextView
     private lateinit var iv_correo_user: TextView
-    private lateinit var historial: TextView
+    private lateinit var ed_perfil: TextView
     private lateinit var carrito: TextView
     private lateinit var home: TextView
     private lateinit var catalogo: TextView
@@ -34,7 +34,7 @@ class PerfilActivity : AppCompatActivity() {
         home = findViewById(R.id.home)
         catalogo = findViewById(R.id.catalogo)
         carrito = findViewById(R.id.carrito)
-        historial = findViewById(R.id.historial)
+        ed_perfil = findViewById(R.id.edit_perfil)
 
         //Obtener correo
         val correologueado = intent.getStringExtra("correo_usuario")
@@ -50,21 +50,24 @@ class PerfilActivity : AppCompatActivity() {
         home.setOnClickListener {
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
-            finish()
+        }
+
+        //Editar perfil
+        ed_perfil.setOnClickListener {
+            val intent = Intent(this, EdicionInformacionUsuarioActivity::class.java)
+            startActivity(intent)
         }
 
         //Catalogo
         catalogo.setOnClickListener {
             val intent = Intent(this, CatalogoActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         //Carrito
         carrito.setOnClickListener {
             val intent = Intent(this, CarritoActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         //Cerrar Sesión

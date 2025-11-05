@@ -95,7 +95,7 @@
             android:layout_marginTop="48dp">
 
             <Button
-                android:id="@+id/btn_comprar"
+                android:id="@+id/btn_cancel"
                 android:layout_width="160dp"
                 android:layout_height="44dp"
                 android:text="@string/btn_cancel"
@@ -107,7 +107,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/btn_carrito"
+                android:id="@+id/btn_chance_delivery"
                 android:layout_width="160dp"
                 android:layout_height="44dp"
                 android:text="@string/btn_save"
