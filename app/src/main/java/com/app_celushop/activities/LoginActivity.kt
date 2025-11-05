@@ -69,6 +69,13 @@ class LoginActivity : AppCompatActivity() {
         //Validar credenciales en BD
         if (usuariosDAO.validarLogin(correo, contrasena)) {
            val usuario = usuariosDAO.obtenerUsuario(correo)
+
+            //Guardar Sesión
+            val sharedPref = getSharedPreferences("sesion", MODE_PRIVATE)
+            val editor = sharedPref.edit()
+            editor.putString("correo", usuario?.email)
+            editor.apply()
+
             Toast.makeText(this, "Bienvenido ${usuario?.nombre}", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, PerfilActivity::class.java)
             startActivity(intent)

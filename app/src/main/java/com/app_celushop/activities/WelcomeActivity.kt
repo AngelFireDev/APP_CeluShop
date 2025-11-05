@@ -19,9 +19,26 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
 
         val btnWelcome = findViewById<Button>(R.id.btn_welcome)
-        btnWelcome.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+
+
+
+
+            btnWelcome.setOnClickListener {
+                val sharedPref = getSharedPreferences("sesion", MODE_PRIVATE)
+                val correo = sharedPref.getString("correo", null)
+
+                if (correo != null) {
+                    //Usuario ya tiene sesión abierta
+                    val intent = Intent(this, PerfilActivity::class.java)
+                    intent.putExtra("correo", correo)
+                    startActivity(intent)
+                    finish()
+                }else {
+                    //Sin sesión
+                    val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 }

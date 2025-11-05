@@ -20,6 +20,9 @@ class DetallesProductoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalles_producto)
 
+        btn_carrito = findViewById(R.id.btn_carrito)
+        btn_comprar = findViewById(R.id.btn_comprar)
+
         btn_carrito.setOnClickListener {
             val intent = Intent(this, CarritoActivity::class.java)
             startActivity(intent)
