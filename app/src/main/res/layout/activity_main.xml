@@ -19,14 +19,6 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@color/background_activities">
-            
-            <ImageView
-                android:id="@+id/ic_menu"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_menu"
-                android:layout_marginStart="15dp"
-                />
 
             <ImageView
                 android:id="@+id/icono"
@@ -35,15 +27,25 @@
                 android:layout_marginStart="10dp"
                 android:src="@drawable/celushop_icono"
                 />
-            
+
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:layout_marginStart="15dp"
                 android:textSize="40dp"
                 />
+            
+            <ImageView
+                android:id="@+id/ic_menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_menu2"
+                android:layout_marginStart="50dp"
+                />
+
+
 
 
         </LinearLayout>
