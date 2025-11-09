@@ -20,7 +20,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 
 class CatalogoAdministradorActivity : AppCompatActivity() {
     private lateinit var btnAdd: Button
-
+    private lateinit var productoAdapter: ProductoCatalogoAdminAdapter
+    private lateinit var productosMutableList: MutableList<Producto>
     private val ProductoDAO = ProductoDAO(this)
 
     private val productoActivityResultLauncher =
@@ -62,10 +63,11 @@ class CatalogoAdministradorActivity : AppCompatActivity() {
 
     private fun verProducto() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerCatalogoAdmin)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView?.layoutManager = LinearLayoutManager(this)
 
         // 2. Obtener la lista y convertirla a MutableList (NECESARIO para la eliminación local en el Adapter)
         val productosMutableList = ProductoDAO.obtenerTodosLosProductos().toMutableList()
+        Log.d("Consola para ver todos la información aquí", "Tamaño de la lista de productos: ${productosMutableList.size}")
 
         // 3. Crear el Adapter, pasando AMBOS ARGUMENTOS REQUERIDOS:
         val adapter = ProductoCatalogoAdminAdapter(
@@ -93,7 +95,7 @@ class CatalogoAdministradorActivity : AppCompatActivity() {
         }
 
 
-        recyclerView.adapter = adapter
+        recyclerView?.adapter = adapter
     }
 
 

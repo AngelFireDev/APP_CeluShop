@@ -1,6 +1,7 @@
 package com.app_celushop.activities.adapter
 
 import android.media.Image
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView

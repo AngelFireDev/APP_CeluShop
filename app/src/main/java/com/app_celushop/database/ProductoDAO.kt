@@ -46,7 +46,7 @@ class ProductoDAO(context: Context) {
         val cursor = db.rawQuery(query, null)
 
         //Recorre los resultados de la consulta
-        if (cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_ID))
             val nombre = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_NOMBRE))
             val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_DESCRIPCION))
