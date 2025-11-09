@@ -35,6 +35,37 @@ class ProductoDAO(context: Context) {
         return resultado != -1L
     }
 
+    //Obtener todos los productos
+    fun obtenerTodosLosProductos(): List<Producto> {
+        val listaProductos = mutableListOf<Producto>()
+        val db = dbHelper.readableDatabase
+
+        //Generar la consulta BD (Query)
+        val query = """
+            SELECT * FROM ${DatabaseHelper.TABLE_PRODUCTOS} 
+        """
+        val cursor = db.rawQuery(query, null)
+
+        //Recorre los resultados de la consulta
+        if (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_ID))
+            val nombre = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_NOMBRE))
+            val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_DESCRIPCION))
+            val precio = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_PRECIO))
+            val url = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_URL))
+            val marca = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_MARCA))
+            val modelo = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_MODELO))
+            val almacenamiento = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_ALMACENAMIENTO))
+            val ram = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_RAM))
+            val color = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_COLOR))
+            val stock = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_STOCK))
+            val producto = Producto(id,nombre,descripcion,precio,url,marca,modelo,almacenamiento,ram,color,stock)
+            listaProductos.add(producto)
+        }
+        cursor.close()
+        return listaProductos
+    }
+
     //Obtener el producto
     fun obtenerProducto(nombre: String): Producto? {
         var producto: Producto? = null
@@ -64,6 +95,17 @@ class ProductoDAO(context: Context) {
         cursor.close()
         db.close()
         return producto
+    }
+
+    //Validar el Producto
+    fun validarProducto(email: String): Boolean {
+        val db = dbHelper.readableDatabase
+        val query = "SELECT * FROM ${DatabaseHelper.TABLE_PRODUCTOS} WHERE ${DatabaseHelper.COLUM_NOMBRE} = ?"
+        val cursor = db.rawQuery(query, arrayOf(email))
+        val existe = cursor.count > 0
+        cursor.close()
+        db.close()
+        return existe
     }
 
     //Actualizar Descripcion

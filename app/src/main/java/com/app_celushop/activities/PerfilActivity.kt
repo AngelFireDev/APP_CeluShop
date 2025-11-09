@@ -21,6 +21,7 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var carrito: TextView
     private lateinit var home: TextView
     private lateinit var catalogo: TextView
+    private lateinit var administrar: TextView
     private lateinit var btn_cerrar_sesion: Button
     private val usuariosDAO = UsuariosDAO(this)
 
@@ -34,6 +35,7 @@ class PerfilActivity : AppCompatActivity() {
         home = findViewById(R.id.home)
         catalogo = findViewById(R.id.catalogo)
         carrito = findViewById(R.id.carrito)
+        administrar = findViewById(R.id.administrador)
         ed_perfil = findViewById(R.id.edit_perfil)
 
         //Obtener correo
@@ -61,6 +63,12 @@ class PerfilActivity : AppCompatActivity() {
         //Catalogo
         catalogo.setOnClickListener {
             val intent = Intent(this, CatalogoActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Administrador
+        administrar.setOnClickListener {
+            val intent = Intent(this, CatalogoAdministradorActivity::class.java)
             startActivity(intent)
         }
 

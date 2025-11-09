@@ -80,4 +80,6 @@
     <string name="btn_add_product">Añadir Producto</string>
     <string name="title_info_contact">Edita tu información de contacto</string>
     <string name="prompt_telefono">Teléfono</string>
+    <string name="text_url_imagen">URL Imagen</string>
+    <string name="text_administrar">Administrar</string>
 </resources>
