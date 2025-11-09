@@ -1,5 +1,6 @@
 package com.app_celushop.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -30,6 +31,8 @@ class AnadirProductoActivity : AppCompatActivity() {
     private lateinit var btnAdd: Button
     private lateinit var btnCancel: Button
 
+    private var productoAEditar: Producto? = null
+
     private val ProductoDAO = ProductoDAO(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,9 +52,45 @@ class AnadirProductoActivity : AppCompatActivity() {
             registrarProducto()
         }
 
+        recibirDatosProducto()
+
         btnCancel.setOnClickListener{
             finish()
         }
+    }
+
+    private fun recibirDatosProducto() {
+        productoAEditar = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            // Para Android 13 (API 33) y superior
+            intent.getParcelableExtra("PRODUCTO_A_EDITAR", Producto::class.java)
+        } else {
+            // Para versiones anteriores
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra("PRODUCTO_A_EDITAR")
+        }
+
+
+        if (productoAEditar != null) {
+            // ... (Tu lógica para rellenar campos) ...
+            rellenarCampos(productoAEditar!!)
+            // ...
+        }
+    }
+
+    private fun rellenarCampos(producto: Producto) {
+        // Rellenar todos los campos del formulario
+        findViewById<EditText>(R.id.productName).setText(producto.nombre)
+        findViewById<EditText>(R.id.productDescription).setText(producto.descripcion)
+        findViewById<EditText>(R.id.productPrice).setText(producto.precio.toString())
+        findViewById<EditText>(R.id.productImage).setText(producto.url_imagen)
+        findViewById<EditText>(R.id.productBrand).setText(producto.marca)
+        findViewById<EditText>(R.id.productModel).setText(producto.modelo)
+        findViewById<EditText>(R.id.productStorage).setText(producto.almacenamiento)
+        findViewById<EditText>(R.id.productRam).setText(producto.ram)
+        findViewById<EditText>(R.id.productColor).setText(producto.color)
+        findViewById<EditText>(R.id.productStock).setText(producto.stock.toString())
+
+        // Nota: Si tienes campos de imagen, también debes cargarlos aquí (ej. usando Glide/Picasso)
     }
 
     private fun initViews() {
@@ -91,24 +130,38 @@ class AnadirProductoActivity : AppCompatActivity() {
                 return
             }
 
-            //Verificar que el producto no este registrado
-            ProductoDAO.validarProducto(nombre_producto) -> {
-                Toast.makeText(this, "El producto ya esta registrado", Toast.LENGTH_SHORT).show()
-                return
-            }
+
         }
 
         //Si pasa todas las condiciones
         var producto = Producto(nombre = nombre_producto, descripcion = descripción, precio = precio, url_imagen = imagen, marca = marca, modelo = modelo, almacenamiento = almacenamiento, ram = ram, color = color, stock = stock)
-        val agregado = ProductoDAO.añadirProducto(producto)
 
-        if(agregado) {
-            Toast.makeText(this, "Producto registrado exitosamente", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, CatalogoAdministradorActivity::class.java)
-            startActivity(intent)
+        if (productoAEditar != null) {
+            // MODO EDICIÓN: Asignar el ID original y actualizar
+            producto.id_producto = productoAEditar!!.id_producto // Usar el ID que se recibió
 
-        }else {
-            Toast.makeText(this, "Error al registrar producto", Toast.LENGTH_SHORT).show()
+            // Usar la función que creaste en ProductoDAO para actualizar
+            val actualizadoExitosamente = ProductoDAO.actualizarProducto(producto)
+
+            if (actualizadoExitosamente) {
+                Toast.makeText(this, "Producto actualizado exitosamente.", Toast.LENGTH_SHORT).show()
+                setResult(Activity.RESULT_OK)
+                finish() // Cierra la Activity y regresa al catálogo
+            } else {
+                Toast.makeText(this, "Error al actualizar el producto.", Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            val agregado = ProductoDAO.añadirProducto(producto)
+
+            if(agregado) {
+                Toast.makeText(this, "Producto registrado exitosamente", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, CatalogoAdministradorActivity::class.java)
+                setResult(Activity.RESULT_OK)
+                startActivity(intent)
+
+            }else {
+                Toast.makeText(this, "Error al registrar producto", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

@@ -2,6 +2,7 @@ package com.app_celushop.activities.adapter
 
 import android.media.Image
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +22,10 @@ class ProductoCatalogoAdminHolder(view: View): RecyclerView.ViewHolder(view) {
     val stock = view.findViewById<TextView>(R.id.ValorDatoStock)
     val image = view.findViewById<ImageView>(R.id.imageProducto)
 
-    fun render(productoModel: Producto){
+    val btnEdit = view.findViewById<ImageView>(R.id.edit)
+    val btnDelete = view.findViewById<ImageView>(R.id.delete)
+
+    fun render(productoModel: Producto, onDeleteClick: (Int) -> Unit, onEditClick: (Producto) -> Unit){
         nameProducto.text = productoModel.nombre
         descripcion.text = productoModel.descripcion
         precio.text = productoModel.precio.toString()
@@ -32,5 +36,7 @@ class ProductoCatalogoAdminHolder(view: View): RecyclerView.ViewHolder(view) {
         color.text = productoModel.color
         stock.text = productoModel.stock.toString()
         Glide.with(image.context).load(productoModel.url_imagen).into(image)
+        btnEdit.setOnClickListener { onEditClick(productoModel) }
+        btnDelete.setOnClickListener { onDeleteClick(productoModel.id_producto) }
     }
 }

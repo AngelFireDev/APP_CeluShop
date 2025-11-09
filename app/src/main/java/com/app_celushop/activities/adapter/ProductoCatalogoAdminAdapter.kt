@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app_celushop.R
 import com.app_celushop.models.Producto
 
-class ProductoCatalogoAdminAdapter(private var productosList: List<Producto>): RecyclerView.Adapter<ProductoCatalogoAdminHolder>() {
+class ProductoCatalogoAdminAdapter(private var productosList: MutableList<Producto>, private val onDeleteClickListener: (Int) -> Unit,private val onEditClickListener: (Producto) -> Unit): RecyclerView.Adapter<ProductoCatalogoAdminHolder>() {
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -20,7 +22,17 @@ class ProductoCatalogoAdminAdapter(private var productosList: List<Producto>): R
         position: Int
     ) {
         val item = productosList[position]
-        holder.render(item)
+        holder.render(productoModel = item,
+            onDeleteClick = { idProducto ->
+                // Cuando el Holder hace clic, ejecuta el callback de la Activity
+                onDeleteClickListener(idProducto)
+
+                // Actualiza la lista del Adapter para refrescar la vista
+                productosList.removeAt(position)
+                notifyItemRemoved(position)
+            },onEditClick = { productoAEditar ->
+                onEditClickListener(productoAEditar)
+            })
     }
 
     override fun getItemCount(): Int {

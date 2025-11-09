@@ -31,12 +31,11 @@ class ProductoDAO(context: Context) {
         //Insertar los valores en la tabla
         //Retorno -1 si no se pudo insertar
         val resultado = db.insert(DatabaseHelper.TABLE_PRODUCTOS, null, values)
-        db.close()
         return resultado != -1L
     }
 
     //Obtener todos los productos
-    fun obtenerTodosLosProductos(): List<Producto> {
+    fun obtenerTodosLosProductos(): MutableList<Producto> {
         val listaProductos = mutableListOf<Producto>()
         val db = dbHelper.readableDatabase
 
@@ -109,15 +108,37 @@ class ProductoDAO(context: Context) {
     }
 
     //Actualizar Descripcion
-    fun actualizarDescripcion(nombre: String, nuevaDescripcion: String): Boolean{
+    fun actualizarProducto(producto: Producto): Boolean {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
-            put(DatabaseHelper.COLUM_DESCRIPCION, nuevaDescripcion)
+            // Agrega todos los campos que deseas actualizar
+            put(DatabaseHelper.COLUM_NOMBRE, producto.nombre)
+            put(DatabaseHelper.COLUM_DESCRIPCION, producto.descripcion)
+            put(DatabaseHelper.COLUM_PRECIO, producto.precio)
+            put(DatabaseHelper.COLUM_URL, producto.url_imagen)
+            put(DatabaseHelper.COLUM_MARCA, producto.marca)
+            put(DatabaseHelper.COLUM_MODELO, producto.modelo)
+            put(DatabaseHelper.COLUM_ALMACENAMIENTO, producto.almacenamiento)
+            put(DatabaseHelper.COLUM_RAM, producto.ram)
+            put(DatabaseHelper.COLUM_COLOR, producto.color)
+            put(DatabaseHelper.COLUM_STOCK, producto.stock)
         }
+
+        // Definir la cláusula WHERE: SOLO actualizar la fila con el ID coincidente
+        val selection = "${DatabaseHelper.COLUM_ID} = ?"
+        val selectionArgs = arrayOf(producto.id_producto.toString())
+
+        // Ejecutar el UPDATE
         val resultado = db.update(
-            DatabaseHelper.TABLE_PRODUCTOS, values,"${DatabaseHelper.COLUM_NOMBRE}=?",arrayOf(nombre)
+            DatabaseHelper.TABLE_PRODUCTOS,
+            values,
+            selection,
+            selectionArgs
         )
+
         db.close()
+
+        // Si resultado > 0, significa que al menos una fila fue actualizada
         return resultado > 0
     }
 

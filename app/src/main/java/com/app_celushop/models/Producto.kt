@@ -1,5 +1,9 @@
 package com.app_celushop.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Producto(
     var id_producto: Int = 0,
     val nombre: String,
@@ -12,4 +16,4 @@ data class Producto(
     val ram: String,
     val color: String,
     val stock: Int = 0,
-)
+): Parcelable
