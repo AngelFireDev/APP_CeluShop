@@ -82,4 +82,6 @@
     <string name="prompt_telefono">Teléfono</string>
     <string name="text_url_imagen">URL Imagen</string>
     <string name="text_administrar">Administrar</string>
+    <string name="tomar_foto">Tomar Foto</string>
+    <string name="seleccionar_imagen">Seleccionar Imagen</string>
 </resources>

@@ -1,18 +1,16 @@
 package com.app_celushop.activities
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.app_celushop.activities.MainActivity
 import com.app_celushop.R
 import android.widget.TextView
 import com.app_celushop.database.UsuariosDAO
+import java.io.File
 
 class PerfilActivity : AppCompatActivity() {
     private lateinit var iv_nombre_user: TextView
@@ -23,12 +21,14 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var catalogo: TextView
     private lateinit var administrar: TextView
     private lateinit var btn_cerrar_sesion: Button
+    private lateinit var img_perfil: ImageView
     private val usuariosDAO = UsuariosDAO(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
+        img_perfil = findViewById(R.id.img_perfil)
         iv_nombre_user = findViewById(R.id.iv_nombre_user)
         iv_correo_user = findViewById(R.id.iv_correo_user)
         btn_cerrar_sesion = findViewById(R.id.btn_cerrar_sesion)
@@ -38,12 +38,26 @@ class PerfilActivity : AppCompatActivity() {
         administrar = findViewById(R.id.administrador)
         ed_perfil = findViewById(R.id.edit_perfil)
 
+        val prefs = getSharedPreferences("sesion_usuario", MODE_PRIVATE)
+
+        val ruta = prefs.getString("foto_perfil", null)
+
+        if (ruta != null) {
+            val file = File(ruta)
+            if (file.exists()) {
+                val bitmap = BitmapFactory.decodeFile(ruta)
+                img_perfil.setImageBitmap(bitmap)
+            } else {
+                img_perfil.setImageResource(R.drawable.ic_perfil_foto)
+            }
+        }
+
         //Obtener correo
         val correologueado = intent.getStringExtra("correo_usuario")
         val usuario = usuariosDAO.obtenerUsuario(correologueado ?: "")
 
         //Mostrar Datos
-        if (usuario !=null) {
+        if (usuario != null) {
             iv_nombre_user.text = usuario.nombre
             iv_correo_user.text = usuario.email
         }
