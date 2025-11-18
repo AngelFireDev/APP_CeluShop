@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "430618727924",
+    "project_id": "celushop-7f2f5",
+    "storage_bucket": "celushop-7f2f5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430618727924:android:05ef19c0c7a4d5ee8e95a1",
+        "android_client_info": {
+          "package_name": "com.app_celushop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430618727924-cdqhonec3iofuk4qr3dgbpr3v1ipokq4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app_celushop",
+            "certificate_hash": "ca5fbe6683eada9e420fa84f0efd3ba538624cdb"
+          }
+        },
+        {
+          "client_id": "430618727924-bq1mt11qv5d5oj3agkil27m94dqbldv6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCq2FwW-Js4v6ONl0p-VD-EPjScqMbgBRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430618727924-9emafc08fbjv8ed1ci8l5l2ffk8j7f2p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
