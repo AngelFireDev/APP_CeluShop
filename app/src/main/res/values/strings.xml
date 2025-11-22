@@ -86,4 +86,6 @@
     <string name="seleccionar_imagen">Seleccionar Imagen</string>
     <string name="Sedes">Nuestras Sedes</string>
     <string name="iniciar_sesi_n_con_google">Iniciar Sesión con Google</string>
+    <string name="administrar">Administrar</string>
+    <string name="sedes_nav">Sedes</string>
 </resources>

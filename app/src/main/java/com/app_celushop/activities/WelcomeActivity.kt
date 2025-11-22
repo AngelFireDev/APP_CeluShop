@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.app_celushop.activities.MainActivity
 import com.app_celushop.R
 import android.widget.Button
+import com.app_celushop.fragments.PerfilFragment
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -29,7 +30,7 @@ class WelcomeActivity : AppCompatActivity() {
 
                 if (correo != null) {
                     //Usuario ya tiene sesión abierta
-                    val intent = Intent(this, PerfilActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("correo", correo)
                     startActivity(intent)
                     finish()

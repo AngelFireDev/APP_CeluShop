@@ -73,7 +73,7 @@
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:backgroundTint="@color/background_activities"
             android:text="@string/signIn"
             android:textColor="@color/white"

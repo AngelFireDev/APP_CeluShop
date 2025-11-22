@@ -109,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
                         .apply()
 
                     Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, PerfilActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {
                     Toast.makeText(this, "Authentication Failed", Toast.LENGTH_SHORT).show()
@@ -157,7 +157,7 @@ class LoginActivity : AppCompatActivity() {
                 .apply()
 
             Toast.makeText(this, "Bienvenido ${usuario?.nombre}", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, PerfilActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         } else {
             Toast.makeText(this, "Credenciales inválidas", Toast.LENGTH_SHORT).show()

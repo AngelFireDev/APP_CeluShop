@@ -1,5 +1,6 @@
 package com.app_celushop.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
@@ -11,8 +12,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.app_celushop.R
 import com.app_celushop.database.UsuariosDAO
+import com.app_celushop.fragments.CatalogoAdministradorFragment
+import com.app_celushop.fragments.CatalogoFragment
+import com.app_celushop.fragments.EdicionInformacionUsuarioFragment
+import com.app_celushop.fragments.GoogleMapsFragment
 import com.app_celushop.fragments.PerfilFragment
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -23,21 +29,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         initViews()
         setupNavigationDrawer()
+        loadFragment(PerfilFragment())
         usuariosDAO = UsuariosDAO(this)
     }
-
+    //val prefs = getSharedPreferences("sesion_usuario", MODE_PRIVATE)
     private fun initViews() {
-        drawerLayout = findViewById(R.id.main)
+
+        drawerLayout = findViewById(R.id.navegacion_menu)
         navView = findViewById(R.id.nav_view)
-        findViewById<android.widget.ImageView>(R.id.icono).setOnClickListener {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                drawerLayout.closeDrawer(GravityCompat.START)
+        findViewById<android.widget.ImageView>(R.id.ic_menu).setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                drawerLayout.closeDrawer(GravityCompat.END)
             } else {
-                drawerLayout.openDrawer(GravityCompat.START)
+                drawerLayout.openDrawer(GravityCompat.END)
             }
         }
     }
@@ -49,27 +56,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_home -> {
-            }
-            R.id.nav_catalogo -> {
-
-            }
-            R.id.nav_carrito -> {
-
-            }
             R.id.nav_perfil -> {
                 // Redireccionamiento
                 loadFragment(PerfilFragment())
             }
-            R.id.nav_cerrarSesion -> {
+            R.id.nav_sedes -> {
+                loadFragment(GoogleMapsFragment())
+            }
+            R.id.nav_catalogo -> {
+                loadFragment(CatalogoFragment())
+            }
+            R.id.nav_carrito -> {
 
             }
+            R.id.nav_administrar-> {
+                loadFragment(CatalogoAdministradorFragment())
+            }
+            R.id.nav_cerrarSesion -> {
+            }
         }
-        drawerLayout.closeDrawer(GravityCompat.START)
+        drawerLayout.closeDrawer(GravityCompat.END)
         return true;
     }
 
-    private fun loadFragment(fragment: Fragment) {
+    fun loadFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.addToBackStack(null)

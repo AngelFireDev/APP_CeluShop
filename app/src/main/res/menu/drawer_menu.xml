@@ -2,14 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:title="@string/inicio"
-            android:id="@+id/nav_home" />
+        <item android:title="@string/perfil"
+            android:id="@+id/nav_perfil"/>
+        <item android:title="@string/sedes_nav"
+            android:id="@+id/nav_sedes" />
         <item android:title="@string/catalogo"
             android:id="@+id/nav_catalogo"/>
         <item android:title="@string/carrito"
             android:id="@+id/nav_carrito"/>
-        <item android:title="@string/perfil"
-            android:id="@+id/nav_perfil"/>
+        <item android:title="@string/administrar"
+            android:id="@+id/nav_administrar"/>
         <item android:title="@string/cerrarSesion"
             android:id="@+id/nav_cerrarSesion"/>
 
