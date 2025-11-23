@@ -5,6 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -53,19 +54,25 @@ class EdicionInformacionUsuarioFragment: Fragment() {
         ActivityResultContracts.GetContent()
     ) { uri ->
         if (uri != null) {
-            imgPerfil.setImageURI(uri)
-
-            // Copiar la imagen
             val inputStream = requireActivity().contentResolver.openInputStream(uri)
-            val file = File(requireActivity().filesDir, "foto_perfil.png")
-            val outputStream = FileOutputStream(file)
-            inputStream?.copyTo(outputStream)
-            outputStream.close()
-            inputStream?.close()
+            val filename = "foto_perfil_${System.currentTimeMillis()}.png"
+            val file = File(requireActivity().filesDir, filename)
 
-            // Guardar la ruta del archivo interno
-            val prefs = requireActivity().getSharedPreferences("sesion_usuario", MODE_PRIVATE)
-            prefs.edit().putString("foto_perfil", file.absolutePath).apply()
+            if (inputStream != null) {
+                val outputStream = FileOutputStream(file)
+                inputStream.copyTo(outputStream)
+                outputStream.close()
+                inputStream.close()
+
+                val prefs = requireActivity().getSharedPreferences("sesion_usuario", MODE_PRIVATE)
+                prefs.edit().putString("foto_perfil", file.absolutePath).apply()
+
+                imgPerfil.setImageBitmap(BitmapFactory.decodeFile(file.absolutePath)) // opcional para mostrarla
+                Log.d("FOTO_DEBUG", "Imagen copiada a: ${file.absolutePath}")
+            } else {
+                Log.e("FOTO_DEBUG", "No se pudo abrir el InputStream del URI")
+                Toast.makeText(requireActivity(), "Error al cargar imagen", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -129,14 +136,8 @@ class EdicionInformacionUsuarioFragment: Fragment() {
                 Toast.makeText(requireActivity(), "Datos actualizados correctamente", Toast.LENGTH_SHORT).show()
             }
 
-            if(correoUsuario != null && rutaFoto != null) {
-                val usuariosDAO = UsuariosDAO(requireActivity())
-                usuariosDAO.actualizarFotoUsuario(correoUsuario, rutaFoto)
-                Toast.makeText(requireActivity(), "Foto actualizada correctamente", Toast.LENGTH_SHORT).show()
-            }
-
             //Funcion para guardar los cambios del usuario
-            (requireActivity() as MainActivity).loadFragment(EdicionInformacionUsuarioFragment())
+            requireActivity().supportFragmentManager.popBackStack()
         }
 
         btnChangeDelivery.setOnClickListener{
@@ -185,7 +186,7 @@ class EdicionInformacionUsuarioFragment: Fragment() {
     }
 
     private fun guardarImagen(bitmap: Bitmap): String {
-        val filename = "foto_perfil.png"
+        val filename = "foto_perfil_${System.currentTimeMillis()}.png"
         val file = File(requireActivity().filesDir, filename)
         val outputStream = FileOutputStream(file)
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)

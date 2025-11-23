@@ -45,6 +45,20 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Validar sesión iniciada
+        val prefs = getSharedPreferences("sesion_usuario", MODE_PRIVATE)
+        val correoUsuario = prefs.getString("correo_usuario", null)
+        val tipoLogin = prefs.getString("tipo_login", null)
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if ((correoUsuario != null && tipoLogin != null) || currentUser != null) {
+            // Ya hay sesión → saltar login
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_login)
 
         //Inicializar DAO

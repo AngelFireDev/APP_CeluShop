@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.app_celushop.database.UsuariosDAO
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import java.io.File
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -54,20 +55,7 @@ class PerfilActivity : AppCompatActivity() {
 
         correoLogueado = prefs.getString("correo_usuario", null)
 
-        val ruta = prefs.getString("foto_perfil", null)
-
-        if (ruta != null) {
-            val file = File(ruta)
-            if (file.exists()) {
-                val bitmap = BitmapFactory.decodeFile(ruta)
-                img_perfil.setImageBitmap(bitmap)
-            } else {
-                val uri = Uri.parse(ruta)
-                img_perfil.setImageURI(uri)
-            }
-        } else {
-            img_perfil.setImageResource(R.drawable.ic_perfil_foto)
-        }
+        cargarDatosUsuario()
 
         val tipoLogin = prefs.getString("tipo_login", null)
         val correoUsuario = prefs.getString("correo_usuario", null)
@@ -105,6 +93,8 @@ class PerfilActivity : AppCompatActivity() {
                             .load(file)
                             .placeholder(R.drawable.ic_perfil_foto)
                             .error(R.drawable.ic_perfil_foto)
+                            .skipMemoryCache(true)
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .into(img_perfil)
                     }
                 }
@@ -165,6 +155,60 @@ class PerfilActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        cargarDatosUsuario()
+    }
+
+    private fun cargarDatosUsuario() {
+        val prefs = getSharedPreferences("sesion_usuario", MODE_PRIVATE)
+        val correoUsuario = prefs.getString("correo_usuario", null)
+        val tipoLogin = prefs.getString("tipo_login", null)
+
+        if (tipoLogin == "google") {
+            val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+            if (currentUser != null) {
+                iv_nombre_user.text = currentUser.displayName ?: "Usuario"
+                iv_correo_user.text = currentUser.email ?: "Correo"
+
+                val photoUrl = currentUser.photoUrl
+                Glide.with(this)
+                    .load(photoUrl)
+                    .placeholder(R.drawable.ic_perfil_foto)
+                    .error(R.drawable.ic_perfil_foto)
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(img_perfil)
+            }
+        } else if (tipoLogin == "bd" && correoUsuario != null) {
+            val usuario = usuariosDAO.obtenerUsuario(correoUsuario)
+            if (usuario != null) {
+                iv_nombre_user.text = usuario.nombre
+                iv_correo_user.text = usuario.email
+
+                if (!usuario.foto.isNullOrEmpty()) {
+                    val file = File(usuario.foto)
+                    if (file.exists()) {
+                        Glide.with(this)
+                            .load(file)
+                            .placeholder(R.drawable.ic_perfil_foto)
+                            .error(R.drawable.ic_perfil_foto)
+                            .skipMemoryCache(true)
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)
+                            .into(img_perfil)
+                        } else {
+                            Log.e("FOTO_DEBUG", "Archivo no existe: ${usuario.foto}")
+                            img_perfil.setImageResource(R.drawable.ic_perfil_foto)
+                        }
+                    }
+                } else {
+                    img_perfil.setImageResource(R.drawable.ic_perfil_foto)
+                }
+            } else {
+            img_perfil.setImageResource(R.drawable.ic_perfil_foto)
         }
     }
 }

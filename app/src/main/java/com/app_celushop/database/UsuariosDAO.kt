@@ -143,9 +143,7 @@ class UsuariosDAO(context: Context)  {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put(DatabaseHelper.COLUMN_NOMBRE, nuevoNombre)
-            if(nuevaFoto != null) {
-                put(DatabaseHelper.COLUMN_FOTO, nuevaFoto)
-            }
+            put(DatabaseHelper.COLUMN_FOTO, nuevaFoto)
         }
         val resultado = db.update(
             DatabaseHelper.TABLE_USUARIOS,

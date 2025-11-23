@@ -38,6 +38,8 @@ class EdicionInformacionUsuarioActivity : AppCompatActivity() {
     private lateinit var etCorreo: EditText
     private lateinit var etNombre: EditText
     private lateinit var etTelefono: EditText
+
+    //Camara
     private val tomarFoto = registerForActivityResult(
         ActivityResultContracts.TakePicturePreview()
     ) { bitmap ->
@@ -105,7 +107,6 @@ class EdicionInformacionUsuarioActivity : AppCompatActivity() {
                 } else {
                     imgPerfil.setImageResource(R.drawable.ic_perfil_foto)
                 }
-
             }
         }
 
@@ -121,16 +122,8 @@ class EdicionInformacionUsuarioActivity : AppCompatActivity() {
                 usuariosDAO.actualizarUsuario(correoUsuario, nuevoNombre, rutaFoto)
                 Toast.makeText(this, "Datos actualizados correctamente", Toast.LENGTH_SHORT).show()
             }
-
-            if(correoUsuario != null && rutaFoto != null) {
-                val usuariosDAO = UsuariosDAO(this)
-                usuariosDAO.actualizarFotoUsuario(correoUsuario, rutaFoto)
-                Toast.makeText(this, "Foto actualizada correctamente", Toast.LENGTH_SHORT).show()
-            }
-
-            //Funcion para guardar los cambios del usuario
-            val intent = Intent(this, PerfilActivity::class.java)
-            startActivity(intent)
+            setResult(RESULT_OK)
+            finish()
         }
 
         btnChangeDelivery.setOnClickListener{
