@@ -88,4 +88,6 @@
     <string name="iniciar_sesi_n_con_google">Iniciar Sesión con Google</string>
     <string name="administrar">Administrar</string>
     <string name="sedes_nav">Sedes</string>
+    <string name="mensaje_entrega">Nos estaremos contactando contigo para la dirección de entrega</string>
+    <string name="agradecimientos">¡Gracias Por Comprar con Nosotros!</string>
 </resources>

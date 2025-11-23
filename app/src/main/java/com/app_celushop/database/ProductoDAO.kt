@@ -2,9 +2,7 @@ package com.app_celushop.database
 
 import android.content.ContentValues
 import android.content.Context
-import android.text.BoringLayout
 import com.app_celushop.models.Producto
-import com.app_celushop.utils.PasswordHelper
 
 class ProductoDAO(context: Context) {
     //Instancia del DatabaseHelper para acceder a la BD
@@ -47,7 +45,7 @@ class ProductoDAO(context: Context) {
 
         //Recorre los resultados de la consulta
         while (cursor.moveToNext()) {
-            val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_ID))
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PRODUCTO_ID))
             val nombre = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_NOMBRE))
             val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_DESCRIPCION))
             val precio = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_PRECIO))
@@ -78,7 +76,7 @@ class ProductoDAO(context: Context) {
 
         //Recorre los resultados de la consulta
         if (cursor.moveToFirst()) {
-            val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_ID))
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PRODUCTO_ID))
             val nombre = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_NOMBRE))
             val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_DESCRIPCION))
             val precio = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUM_PRECIO))
@@ -125,7 +123,7 @@ class ProductoDAO(context: Context) {
         }
 
         // Definir la cláusula WHERE: SOLO actualizar la fila con el ID coincidente
-        val selection = "${DatabaseHelper.COLUM_ID} = ?"
+        val selection = "${DatabaseHelper.COLUMN_PRODUCTO_ID} = ?"
         val selectionArgs = arrayOf(producto.id_producto.toString())
 
         // Ejecutar el UPDATE
@@ -146,7 +144,7 @@ class ProductoDAO(context: Context) {
     //Eliminar producto
     fun eliminarProducto(id: String): Boolean{
         val db = dbHelper.writableDatabase
-        val resultado = db.delete(DatabaseHelper.TABLE_PRODUCTOS, "${DatabaseHelper.COLUM_ID}=?",
+        val resultado = db.delete(DatabaseHelper.TABLE_PRODUCTOS, "${DatabaseHelper.COLUMN_PRODUCTO_ID}=?",
             arrayOf(id))
         db.close()
         return resultado > 0

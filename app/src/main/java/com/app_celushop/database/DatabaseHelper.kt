@@ -11,7 +11,7 @@ class DatabaseHelper(context: Context) :
             private const val DATABASE_VERSION = 2
 
             const val TABLE_PRODUCTOS = "productos"
-            const val COLUM_ID = "id_producto"
+            const val COLUMN_PRODUCTO_ID = "id_producto"
             const val COLUM_NOMBRE = "nombre"
             const val COLUM_DESCRIPCION = "descripcion"
             const val COLUM_PRECIO = "precio"
@@ -25,7 +25,7 @@ class DatabaseHelper(context: Context) :
 
             private const val CREATE_TABLE = """
                 CREATE TABLE $TABLE_PRODUCTOS(
-                    $COLUM_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    $COLUMN_PRODUCTO_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     $COLUM_NOMBRE TEXT NOT NULL,
                     $COLUM_DESCRIPCION TEXT NOT NULL,
                     $COLUM_PRECIO INTEGER NOT NULL,
@@ -37,6 +37,22 @@ class DatabaseHelper(context: Context) :
                     $COLUM_COLOR TEXT NOT NULL,
                     $COLUM_STOCK INTEGER NOT NULL
                 )"""
+
+
+            //Carrito de Compras
+
+            const val TABLE_CARRITO = "carrito"
+            const val COLUMN_CARRITO_ID = "id"
+            const val COLUMN_CARRITO_PRODUCTO_ID = "producto_id" // Usaremos el ID del producto
+            const val COLUMN_CARRITO_CANTIDAD = "cantidad"
+
+            const val CREATE_TABLE_CARRITO = """
+                CREATE TABLE $TABLE_CARRITO (
+                    $COLUMN_CARRITO_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    $COLUMN_CARRITO_PRODUCTO_ID INTEGER NOT NULL,
+                    $COLUMN_CARRITO_CANTIDAD INTEGER DEFAULT 1,
+                    FOREIGN KEY($COLUMN_CARRITO_PRODUCTO_ID) REFERENCES ${DatabaseHelper.TABLE_PRODUCTOS}(${DatabaseHelper.COLUMN_PRODUCTO_ID})
+            )"""
 
             // Tabla Usuarios
             const val TABLE_USUARIOS = "usuarios"
@@ -61,6 +77,7 @@ class DatabaseHelper(context: Context) :
             override fun onCreate(db: SQLiteDatabase) {
                 db.execSQL(CREATE_TABLE)
                 db.execSQL(CREATE_TABLE_USUARIOS)
+                db.execSQL(CREATE_TABLE_CARRITO)
             }
 
             override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

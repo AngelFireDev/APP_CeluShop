@@ -30,7 +30,6 @@ import java.io.FileOutputStream
 
 class EdicionInformacionUsuarioFragment: Fragment() {
     private lateinit var btnSave: Button
-    private lateinit var btnChangeDelivery: Button
     private lateinit var btnCancel: Button
     private lateinit var imgPerfil: ImageView
     private lateinit var btnCamara: Button
@@ -92,7 +91,6 @@ class EdicionInformacionUsuarioFragment: Fragment() {
         btnCamara = view.findViewById(R.id.btn_camara)
         btnGaleria = view.findViewById(R.id.btn_galeria)
         btnSave = view.findViewById(R.id.btn_save)
-        btnChangeDelivery = view.findViewById(R.id.btn_chance_delivery)
         btnCancel = view.findViewById(R.id.btn_cancel)
         etCorreo = view.findViewById(R.id.et_correo)
         etNombre = view.findViewById(R.id.et_nombre)
@@ -140,9 +138,7 @@ class EdicionInformacionUsuarioFragment: Fragment() {
             requireActivity().supportFragmentManager.popBackStack()
         }
 
-        btnChangeDelivery.setOnClickListener{
-            //(requireActivity() as MainActivity).loadFragment(EdicionDireccionFragment())
-        }
+
 
         btnCancel.setOnClickListener{
             requireActivity().supportFragmentManager.popBackStack()

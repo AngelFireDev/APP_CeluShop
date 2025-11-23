@@ -51,8 +51,7 @@ class PerfilFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Usa el XML de tu activity_perfil (asumiendo que lo renombraste a fragment_perfil.xml)
-        return inflater.inflate(R.layout.fragment_perfil, container, false) // ⬅️ Usa el nombre de tu XML de perfil
+        return inflater.inflate(R.layout.fragment_perfil, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -171,8 +170,7 @@ class PerfilFragment: Fragment() {
 
         //Carrito
         carrito.setOnClickListener {
-            val intent = Intent(requireContext(), CarritoActivity::class.java)
-            startActivity(intent)
+            (requireActivity() as MainActivity).loadFragment(CarritoFragment())
         }
 
         //Cerrar Sesión

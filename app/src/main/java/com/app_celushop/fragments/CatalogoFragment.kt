@@ -18,8 +18,6 @@ import com.app_celushop.database.ProductoDAO
 import com.app_celushop.database.UsuariosDAO
 
 class CatalogoFragment: Fragment() {
-    private lateinit var producto: TextView
-
     private lateinit var ProductoDAO: ProductoDAO
 
 
@@ -29,8 +27,7 @@ class CatalogoFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Usa el XML de tu activity_perfil (asumiendo que lo renombraste a fragment_perfil.xml)
-        return inflater.inflate(R.layout.fragment_catalogo, container, false) // ⬅️ Usa el nombre de tu XML de perfil
+        return inflater.inflate(R.layout.fragment_catalogo, container, false)
     }
 
 
@@ -44,7 +41,6 @@ class CatalogoFragment: Fragment() {
     }
 
     private fun initViews(view: View) {
-        //producto = findViewById(R.id.titulo_producto)
     }
 
     private fun setupListeners(rootView: View) {

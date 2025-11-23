@@ -9,12 +9,14 @@ import android.os.Looper
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.app_celushop.activities.MainActivity
 import com.app_celushop.R
+import com.app_celushop.database.CarritoDAO
 import com.app_celushop.models.Producto
 import com.bumptech.glide.Glide
 
@@ -22,17 +24,20 @@ class DetallesProductoActivity : AppCompatActivity() {
     private lateinit var btn_carrito: Button
     private lateinit var btn_comprar: Button
 
+    private lateinit var carritoDAO:CarritoDAO
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalles_producto)
 
+        btn_carrito = findViewById(R.id.btn_carrito)
+        btn_comprar = findViewById(R.id.btn_comprar)
+        carritoDAO = CarritoDAO(context = this)
+
         val producto: Producto? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // ✅ API MODERNA (Android 13 / API 33 en adelante)
-            // Se pasa la clave (String) y la Clase (Producto::class.java)
             intent.getParcelableExtra("PRODUCTO_SELECCIONADO", Producto::class.java)
         } else {
-            // ➡️ API ANTIGUA (para compatibilidad con versiones anteriores a Android 13)
             @Suppress("DEPRECATION")
             intent.getParcelableExtra("PRODUCTO_SELECCIONADO")
         }
@@ -59,17 +64,25 @@ class DetallesProductoActivity : AppCompatActivity() {
             Glide.with(this).load(producto.url_imagen).into(imageProducto)
         }
 
-        btn_carrito = findViewById(R.id.btn_carrito)
-        btn_comprar = findViewById(R.id.btn_comprar)
-
-        btn_carrito.setOnClickListener {
-            val intent = Intent(this, CarritoActivity::class.java)
-            startActivity(intent)
+        if (producto != null) {
+            btn_carrito.setOnClickListener {
+                agregarACarrito(producto)
+            }
         }
 
         btn_comprar.setOnClickListener {
             val intent = Intent(this, ConfirmacionCompraActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun agregarACarrito(producto: Producto) {
+        val agregado = carritoDAO.añadirCarrito(producto)
+
+        if (agregado) {
+            Toast.makeText(this, "✅ '${producto.nombre}' añadido al carrito", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "❌ Error al añadir al carrito o ya existe", Toast.LENGTH_SHORT).show()
         }
     }
 }

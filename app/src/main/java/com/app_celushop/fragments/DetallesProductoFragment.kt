@@ -10,35 +10,39 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.app_celushop.R
 import com.app_celushop.activities.CarritoActivity
 import com.app_celushop.activities.ConfirmacionCompraActivity
+import com.app_celushop.activities.MainActivity
+import com.app_celushop.database.CarritoDAO
+import com.app_celushop.database.UsuariosDAO
 import com.app_celushop.models.Producto
 import com.bumptech.glide.Glide
 
 class DetallesProductoFragment: Fragment() {
     private lateinit var btn_carrito: Button
-    private lateinit var btn_comprar: Button
+    private lateinit var carritoDAO: CarritoDAO
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Usa el XML de tu activity_perfil (asumiendo que lo renombraste a fragment_perfil.xml)
-        return inflater.inflate(R.layout.fragment_detalles_producto, container, false) // ⬅️ Usa el nombre de tu XML de perfil
+        return inflater.inflate(R.layout.fragment_detalles_producto, container, false)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        btn_carrito = view.findViewById(R.id.btn_carrito)
+        carritoDAO = CarritoDAO(requireContext())
+
         val producto: Producto? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // Se pasa la clave (String) y la Clase (Producto::class.java)
             arguments?.getParcelable("PRODUCTO_SELECCIONADO", Producto::class.java)
         } else {
-            // ➡️ API ANTIGUA (para compatibilidad con versiones anteriores a Android 13)
             @Suppress("DEPRECATION")
             arguments?.getParcelable("PRODUCTO_SELECCIONADO") as Producto?
         }
@@ -65,17 +69,24 @@ class DetallesProductoFragment: Fragment() {
             Glide.with(this).load(producto.url_imagen).into(imageProducto)
         }
 
-        btn_carrito = view.findViewById(R.id.btn_carrito)
-        btn_comprar = view.findViewById(R.id.btn_comprar)
 
-        btn_carrito.setOnClickListener {
-            val intent = Intent(requireContext(), CarritoActivity::class.java)
-            startActivity(intent)
+
+        if (producto != null) {
+            btn_carrito.setOnClickListener {
+                agregarACarrito(producto)
+            }
         }
 
-        btn_comprar.setOnClickListener {
-            val intent = Intent(requireContext(), ConfirmacionCompraActivity::class.java)
-            startActivity(intent)
+    }
+
+    private fun agregarACarrito(producto: Producto) {
+        val agregado = carritoDAO.añadirCarrito(producto)
+
+        if (agregado) {
+            Toast.makeText(requireContext(), "✅ '${producto.nombre}' añadido al carrito", Toast.LENGTH_SHORT).show()
+            (requireActivity() as MainActivity).loadFragment(CarritoFragment())
+        } else {
+            Toast.makeText(requireContext(), "❌ Error al añadir al carrito o ya existe", Toast.LENGTH_SHORT).show()
         }
     }
 }
