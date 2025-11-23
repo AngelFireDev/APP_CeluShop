@@ -61,7 +61,7 @@
     <string name="title_delivery_confirmation">Entrega</string>
     <string name="btn_chance_delivery_confirmation">Modificar Dirección de Entrega</string>
     <string name="amount_test">1</string>
-    <string name="btn_continue_shopping">Continuar Comprar</string>
+    <string name="btn_continue_shopping">Continuar Compra</string>
     <string name="text_shopping_cart">Total</string>
     <string name="title_add_product">Añadir Información del Producto</string>
     <string name="text_name_product_add">Nombre del Producto</string>
